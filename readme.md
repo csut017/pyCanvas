@@ -44,6 +44,10 @@ Where:
 * *assignment*: the identifier of the assignment. This identifier can be retrieved from the Canvas URL.
 * *file_path*: the path to the file. This file will contain the marks after the download. **Note**: if the file already exists, it will be overwritten.
 
+Options are:
+* --rubrics: include rubrics in the download.
+* --comments: include comments in the download. **Note**: these will be concatenated into a single cell.
+
 ## upload_marks
 
 This script will download the marks for an assignment to an Excel spreadsheet.
@@ -56,3 +60,6 @@ Where:
 * *assignment*: the identifier of the assignment. This identifier can be retrieved from the Canvas URL.
 * *file_path*: the path to the file. This file will contain the marks to download.
 
+
+Options are:
+* --rubrics: include rubrics in the upload. The names of the rubric items must be the column names. If the score matches a rating, then the rating label will be applied.
