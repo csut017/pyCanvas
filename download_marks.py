@@ -50,11 +50,20 @@ def main():
         if args.rubrics:
             try:
                 rubric = submission['rubric_assessment']
-                for key, item in mapping.items():
-                    data[item].append(rubric[key]['points'])
             except KeyError:
+                rubric = None
+            
+            if rubric is None:
                 for _, item in mapping.items():
                     data[item].append(None)
+            else:
+                for key, item in mapping.items():
+                    existing = data[item]
+                    try:
+                        existing.append(rubric[key]['points'])
+                    except KeyError:
+                        existing.append(None)
+
         if args.comments:
             data['Comments'].append('\n'.join([comment['comment'] for comment in submission['submission_comments']]))
     df = pd.DataFrame(data)
